@@ -10,14 +10,21 @@
   </head>
   <body>
     <script>
-        var notify = Metro.notify;
-        notify.create("You will be redirected back to try again.", "Wrong password!", {
-            cls: "alert",
-            timeout: 5000,
-            onClose: history.back
-        });
+        document.querySelector("#x").remove();
+
+        setTimeout(function(){
+            var notify = Metro.notify;
+            notify.create("You can try again in 5 seconds.", "Wrong password!", {
+                cls: "alert",
+                timeout: 5000,
+                onClose: history.back
+            })
+        },1000);
     </script>
 
+    <p id="x">Loading...</p>
+
+    <noscript>Wrong password!</noscript>
     <!-- Metro UI -->
     <script src="https://cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
   </body>
