@@ -3,12 +3,23 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
+        <title>Insert Password</title>
         <!-- Metro UI -->
         <link rel="stylesheet" href="https://cdn.korzh.com/metroui/v4/css/metro-all.min.css">
+        <script>
+        	function idChanged(id){
+            	document.querySelector("#submit").style.height = (id.value.length === 8 ? "8%" : "0%");
+            }
+        </script>
     </head>
     <body>
-        <input class="input-large" type="text" data-role="keypad" data-open="true" data-shuffle="true" placeholder="Enter all numbers" data-key-length="6" />
+    	<div>
+            <h1 class="text-center">Password Protected!</h1>
+            <p class="text-center">You will need to enter your password for this.</p>
+        <hr/>
+        </div>
+        <input id="pss" class="input-large" type="text" data-role="keypad" data-open="true" data-shuffle="true" style="text-align: center;" placeholder="Enter all numbers" data-key-length="8" data-on-change="idChanged(this)" />
+        <input id="submit" type="submit" style="width:100%;height:0%;" onclick="window.location.href(`https://toxiplays.github.io/h1d3out/main/${document.querySelector(#pss).value}`);"/>
 
         <!-- Metro UI -->
         <script src="https://cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
