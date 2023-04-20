@@ -12,9 +12,8 @@
                 var notify = Metro.notify;
                 notify.create("You will be able to try again in 5 seconds.", "Wrong password!", {
                     cls: "alert",
-                    onClose: setTimeout(history.back(),13000)
                 })
-            },1000);
+            },1000);setTimeout(history.back(),13000);
         };
     </script>
     <!-- Metro UI -->
