@@ -8,18 +8,25 @@
         <link rel="stylesheet" href="https://cdn.korzh.com/metroui/v4/css/metro-all.min.css">
         <script>
         	function idChanged(id){
-            	document.querySelector("#submit").style.height = (id.value.length === 8 ? "8%" : "0%");
+            	document.querySelector("#submit").style.height = (id.value.length === 8 ? "3em" : "0%");
             }
         </script>
+        <style>
+            body {
+                margin: 1.5em;
+            }
+        </style>
     </head>
     <body>
-    	<div>
-            <h1 class="text-center">Password Protected!</h1>
-            <p class="text-center">You will need to enter your password for this.</p>
-        <hr/>
+        <div class="main">
+            <div>
+                <h1 class="text-center">Password Protected!</h1>
+                <p class="text-center">You will need to enter your password for this.</p>
+            <hr/>
+            </div>
+            <input id="pss" class="input-large" type="text" data-role="keypad" data-open="true" data-shuffle="true" style="text-align: center;" placeholder="Enter all numbers" data-key-length="8" data-on-change="idChanged(this)" />
+            <input id="submit" class="button success outline" type="submit" style="width:100%;height:0%;" onclick="window.location.href = `https://toxiplays.github.io/h1d3out/${document.querySelector('#pss').value}`;"/>
         </div>
-        <input id="pss" class="input-large" type="text" data-role="keypad" data-open="true" data-shuffle="true" style="text-align: center;" placeholder="Enter all numbers" data-key-length="8" data-on-change="idChanged(this)" />
-        <input id="submit" class="button success outline" type="submit" style="width:100%;height:0%;" onclick="window.location.href = `https://toxiplays.github.io/h1d3out/${document.querySelector('#pss').value}`;"/>
 
         <!-- Metro UI -->
         <script src="https://cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
