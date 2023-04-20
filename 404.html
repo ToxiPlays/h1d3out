@@ -13,7 +13,7 @@
                 notify.create("You can try again in 5 seconds.", "Wrong password!", {
                     cls: "alert",
                     timeout: 5000,
-                    onClose: history.back
+                    onClose: history.back()
                 })
             },1000);
         };
@@ -23,7 +23,6 @@
   </head>
   <body onload="ld()">
     
-
     <p id="x">Loading...</p>
 
     <noscript>Wrong password!</noscript>
