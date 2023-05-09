@@ -31,6 +31,7 @@
       firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
     
       var player;
+      var initHeight;
       function onYouTubeIframeAPIReady() {
         player = new YT.Player('arg-vid', {
             events: {
@@ -46,11 +47,13 @@
         console.log("stop-like state!");
         document.querySelector('.main').style.opacity = '1';
         document.querySelector('body').style.background = 'white';
+        document.getElementById('arg-vid').style.marginTop = '0%';
       }
       function shiftOn() {
         console.log("playback-like state!");
         document.querySelector('.main').style.opacity = '0';
         document.querySelector('body').style.background = 'black';
+        document.getElementById('arg-vid').style.marginTop = '-100%';
       }
       function changeBorderColor(playerStatus) {
         if (playerStatus == -1) {
@@ -80,7 +83,7 @@
       <object id="pdf" height="800" type="application/pdf" data="https://toxiplays.github.io/h1d3out/94907289/pr.pdf"></object>
     </div>
     
-    <iframe id="arg-vid" width="100%" height="315" src="https://www.youtube-nocookie.com/embed/3fiWiqsqFWc?controls=0&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    <iframe id="arg-vid" width="100%" height="315" src="https://www.youtube-nocookie.com/embed/3fiWiqsqFWc?controls=0&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" style="transition: 1s" allowfullscreen></iframe>
     
 
     <!-- Metro UI -->
