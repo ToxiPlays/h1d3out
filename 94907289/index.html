@@ -11,20 +11,78 @@
     <style>
       body {
           margin: 1.5em;
+          transition: 1s;
       }
 
       object {
          width: 100%;
+         transition: 1s;
+      }
+
+      .main {
+        transition: 1s;
       }
      </style>
+     <script type="text/javascript">
+      var tag = document.createElement('script');
+      tag.id = 'iframe-demo';
+      tag.src = 'https://www.youtube.com/iframe_api';
+      var firstScriptTag = document.getElementsByTagName('script')[0];
+      firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+      var player;
+      function onYouTubeIframeAPIReady() {
+        player = new YT.Player('existing-iframe-example', {
+            events: {
+              'onReady': onPlayerReady,
+              'onStateChange': onPlayerStateChange
+            }
+        });
+      }
+      function onPlayerReady(event) {
+        document.querySelector('.main').style.opacity = '1';
+      }
+      function shiftOff() {
+        console.log("stop-like state!");
+        document.querySelector('.main').style.opacity = '1';
+        document.querySelector('body').style.background = 'black';
+      }
+      function shiftOn() {
+        console.log("playback-like state!");
+        document.querySelector('.main').style.opacity = '0';
+        document.querySelector('body').style.background = 'black';
+      }
+      function changeBorderColor(playerStatus) {
+        if (playerStatus == -1) {
+          shiftOff(); // unstarted = gray
+        } else if (playerStatus == 0) {
+          shiftOff(); // ended = yellow
+        } else if (playerStatus == 1) {
+          shiftOn(); // playing = green
+        } else if (playerStatus == 2) {
+          shiftOff(); // paused = red
+        } else if (playerStatus == 3) {
+          // buffering = purple
+        } else if (playerStatus == 5) {
+          shiftOn(); // video cued = orange
+        }
+        console.log(playerStatus);
+      }
+      function onPlayerStateChange(event) {
+        changeBorderColor(event.data);
+      }
+    </script>
   </head>
   <body>
-    <h1>Hello, world!</h1>
+    <div class="main">
+      <h1>Hello, world!</h1>
+      
+      <object id="pdf" height="800" type="application/pdf" data="https://toxiplays.github.io/h1d3out/94907289/pr.pdf"></object>
+    </div>
     
-    <object height="800" type="application/pdf" data="https://toxiplays.github.io/h1d3out/94907289/pr.pdf"></object>
+    <iframe width="100%" height="315" src="https://www.youtube-nocookie.com/embed/3fiWiqsqFWc?controls=0&enablejsapi=1" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+    
 
-    <iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/3fiWiqsqFWc?controls=0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    
     <!-- Metro UI -->
     <script src="https://cdn.korzh.com/metroui/v4/js/metro.min.js"></script>
   </body>
