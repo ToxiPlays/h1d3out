@@ -47,13 +47,17 @@
         console.log("stop-like state!");
         document.querySelector('.main').style.opacity = '1';
         document.querySelector('body').style.background = 'white';
-        document.getElementById('arg-vid').style.marginTop = '0%';
+        setTimeout(function(){
+          document.querySelector('.main').style.display = 'none';
+        },1000);
       }
       function shiftOn() {
         console.log("playback-like state!");
         document.querySelector('.main').style.opacity = '0';
         document.querySelector('body').style.background = 'black';
-        document.getElementById('arg-vid').style.marginTop = '-100%';
+        setTimeout(function(){
+          document.querySelector('.main').style.display = 'block';
+        },1000);
       }
       function changeBorderColor(playerStatus) {
         if (playerStatus == -1) {
